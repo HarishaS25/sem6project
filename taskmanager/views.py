@@ -8,3 +8,7 @@ def home(request):
 
 def about(request):
     return render(request, 'taskmanager/about.html')
+
+
+def tasks(request):
+    return render(request, 'taskmanager/tasks.html')

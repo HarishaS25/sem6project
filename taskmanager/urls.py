@@ -4,5 +4,6 @@ from . import views
 
 urlpatterns = [
     path('', views.home, name='taskmanager-home'),
-    path('about/', views.about, name='taskmanager-about')
+    path('about/', views.about, name='taskmanager-about'),
+    path('tasks/', views.tasks, name='taskmanager-tasks')
 ]
