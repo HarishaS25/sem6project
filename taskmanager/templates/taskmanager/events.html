@@ -1,0 +1,21 @@
+{% extends "taskmanager/base.html" %}
+{% block content %}
+    {% if events %}
+        {%  for event in events %}
+            <article class="media content-section">
+            <div class="media-body">
+                <div class="article-metadata">
+                    <a class="'mr-2" href=""#>{{ event.author }}</a>
+                    <small class="text-muted">{{ event.due }}</small>
+                </div>
+                <h2><a class="'article-title" href = "{% url 'event-detail' event.id %}">{{ event.name }}</a></h2>
+                <p class="article-content">{{ event.description }}</p>
+                </div>
+
+            </div>
+            </article>
+        {% endfor %}
+        {% else %}
+        <h1>no events</h1>
+    {% endif %}
+{% endblock content %}

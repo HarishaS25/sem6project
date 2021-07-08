@@ -1,4 +1,42 @@
 {% extends "taskmanager/base.html" %}
 {% block content %}
-	<h1>Tasks</h1>
+    {% if due or tasks %}
+        <small class="text-muted">Due</small>
+    	{%  for task in due %}
+            <article class="media content-section">
+            <div class="media-body">
+                <div class="article-metadata">
+                    <a class="mr-2" href="#">{{ task.author }}</a>
+                    <small class="text-muted">{{ task.due }}</small>
+                </div>
+                <h2><a class="article-title" href = "{% url 'task-detail' task.id %}">{{ task.name }}</a></h2>
+                <p class="article-content">{{ task.description }}</p>
+                </div>
+
+            </div>
+            </article>
+        {% endfor %}
+        {% if tasks %}
+        <small class="text-muted">Yet to be completed</small>
+        {%  for task in tasks %}
+            <article class="media content-section">
+            <div class="media-body">
+                <div class="article-metadata">
+                    <a class="'mr-2" href="#">{{ task.author }}</a>
+                    <small class="text-muted">{{ task.due }}</small>
+                </div>
+                <h2><a class="'article-title" href = "{% url 'task-detail' task.id %}">{{ task.name }}</a></h2>
+                <p class="article-content">{{ task.description }}</p>
+                </div>
+
+            </div>
+            </article>
+        {% endfor %}
+            {% endif %}
+        {% else %}
+        <center>
+        <h1>no tasks</h1>
+        </center>
+    {% endif %}
+
 {% endblock content %}

@@ -1,0 +1,30 @@
+
+{% extends "taskmanager/base.html" %}
+{% block content %}
+       {% if user.is_authenticated and user.id == object.author.id%}
+            <article class="media content-section">
+            <div class="media-body">
+                <div class="article-metadata">
+                    <a class="'mr-2" href="#">{{ object.author }}</a>
+                    <small class="text-muted">{{ object.due }}</small>
+                    <div>
+                    {% if object.name_type == 1 %}
+                    <a class="btn btn-secondary btn-sm mt-1 mb-1" href="{% url 'task-completed' object.id %}">Mark as Complete</a>
+                    <a class="btn btn-secondary btn-sm mt-1 mb-1" href="{% url 'task-update' object.id %}">Update</a>
+                    <a class="btn btn-danger btn-sm mt-1 mb-1" href="{% url 'task-delete' object.id %}">Delete</a>
+                    {% else %}
+                    <a class="btn btn-secondary btn-sm mt-1 mb-1" href="{% url 'event-completed' object.id %}">Mark as Complete</a>
+                    <a class="btn btn-secondary btn-sm mt-1 mb-1" href="{% url 'event-update' object.id %}">Update</a>
+                    <a class="btn btn-danger btn-sm mt-1 mb-1" href="{% url 'event-delete' object.id %}">Delete</a>
+                    {% endif %}
+                </div>
+                </div>
+                <h2 class="article-title">{{ object.name }}</h2>
+                <p class="article-content">{{ object.description }}</p>
+                </div>
+
+            </div>
+            </article>
+    {% endif %}
+
+{% endblock content %}s
