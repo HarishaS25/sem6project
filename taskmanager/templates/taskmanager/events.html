@@ -16,6 +16,10 @@
             </article>
         {% endfor %}
         {% else %}
-        <h1>no events</h1>
+        <center>
+        <h1>No Events</h1>
+            <p>Please add Events by clicking on add button</p>
+        <a class="btn btn-secondary btn-sm mt-1 mb-1" href="{% url 'new'%}">Add Event</a>
+        </center>
     {% endif %}
 {% endblock content %}

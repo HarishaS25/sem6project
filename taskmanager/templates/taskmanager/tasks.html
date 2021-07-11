@@ -1,6 +1,7 @@
 {% extends "taskmanager/base.html" %}
 {% block content %}
     {% if due or tasks %}
+        {% if due %}
         <small class="text-muted">Due</small>
     	{%  for task in due %}
             <article class="media content-section">
@@ -16,6 +17,7 @@
             </div>
             </article>
         {% endfor %}
+            {% endif %}
         {% if tasks %}
         <small class="text-muted">Yet to be completed</small>
         {%  for task in tasks %}
@@ -35,7 +37,9 @@
             {% endif %}
         {% else %}
         <center>
-        <h1>no tasks</h1>
+        <h1>No Tasks</h1>
+            <p>Please add Tasks by clicking on add button</p>
+        <a class="btn btn-secondary btn-sm mt-1 mb-1" href="{% url 'new'%}">Add Task</a>
         </center>
     {% endif %}
 

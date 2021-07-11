@@ -140,4 +140,11 @@ def plot(request):
     data.append(delayed)
     data.append(not_completed)
     s = sum(data)
-    return render(request, 'taskmanager/plot.html', {'labels': labels, 'data': data, 'sum': s})
+    on_time_percentage = round(
+        (completed / (completed + deleted + delayed)) * 100, 2)
+    deleted_percentage = round((deleted/ (completed + deleted + delayed)) * 100, 2)
+    delayed_percentage = round((delayed / (completed + deleted + delayed)) * 100, 2)
+    return render(request, 'taskmanager/plot.html', {'labels': labels, 'data': data, 'sum': s,
+                                                     'success_p': on_time_percentage,
+                                                     'deleted_percentage':deleted_percentage,
+                                                     'delayed_percentage':delayed_percentage})
